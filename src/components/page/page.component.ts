@@ -7,6 +7,7 @@ import { PaperService } from '../../services/paper.service';
 
 @Component({
   selector: 'app-page',
+  standalone: true,
   templateUrl: './page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, FormsModule]

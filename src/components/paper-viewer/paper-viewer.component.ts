@@ -6,6 +6,7 @@ import { PaperService } from '../../services/paper.service';
 
 @Component({
   selector: 'app-paper-viewer',
+  standalone: true,
   templateUrl: './paper-viewer.component.html',
   styleUrls: ['./paper-viewer.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

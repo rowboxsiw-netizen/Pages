@@ -6,6 +6,7 @@ import { PaperViewerComponent } from './components/paper-viewer/paper-viewer.com
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, HomeComponent, PaperViewerComponent]
