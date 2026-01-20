@@ -15,12 +15,13 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/maharashtra-board-question-paper-generator",
-            "index": "index.html",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "favicon.ico"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [],
             "scripts": []
