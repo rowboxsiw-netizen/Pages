@@ -6,12 +6,13 @@
       <p class="text-gray-600">Student: {{ paperService.studentName() }}</p>
     </div>
 
-    <div class="book-container w-full aspect-[2/1.414]">
+    <div class="book-container w-full max-w-md lg:max-w-none aspect-[1/1.414] lg:aspect-[2/1.414]">
       <div class="book">
         @for(page of qp.pages; track page.pageNumber) {
           <div 
-            class="page" 
-            [class.flipped]="currentPage() > page.pageNumber"
+            class="page"
+            [class.active-mobile]="currentPage() === page.pageNumber"
+            [class.flipped]="desktopBookStatePage() > page.pageNumber"
             [style.z-index]="qp.totalPages - page.pageNumber">
             <div class="page-front">
               <app-page [page]="page"></app-page>
@@ -26,12 +27,12 @@
       </div>
     </div>
 
-    <div class="flex justify-between w-full max-w-4xl mt-6">
+    <div class="flex justify-between w-full max-w-xs lg:max-w-4xl mt-6">
       <button (click)="flipPrev()" [disabled]="currentPage() <= 1" class="px-6 py-2 bg-white rounded-md shadow-lg font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
         &larr; Previous
       </button>
       <div class="text-lg font-semibold text-gray-700 flex items-center">
-        Page {{ currentPage() === 1 ? '1' : (currentPage() - 1) + ' - ' + currentPage() }} of {{ totalPages() }}
+        Page {{ pageDisplay() }} of {{ totalPages() }}
       </div>
       <button (click)="flipNext()" [disabled]="currentPage() >= totalPages()" class="px-6 py-2 bg-white rounded-md shadow-lg font-semibold text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
         Next &rarr;
