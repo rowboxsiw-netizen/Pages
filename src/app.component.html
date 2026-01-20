@@ -1,0 +1,11 @@
+
+<main class="min-h-screen w-full flex flex-col items-center justify-center p-4 bg-slate-200">
+  @switch (view()) {
+    @case ('home') {
+      <app-home (start)="startPaper($event)"></app-home>
+    }
+    @case ('paper') {
+      <app-paper-viewer></app-paper-viewer>
+    }
+  }
+</main>
