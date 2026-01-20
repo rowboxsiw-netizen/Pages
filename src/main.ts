@@ -1,7 +1,6 @@
-
-import '@angular/compiler';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
+// Fix: `provideExperimentalZonelessChangeDetection` is deprecated and has been replaced by `provideZonelessChangeDetection`.
 import { provideZonelessChangeDetection } from '@angular/core';
 
 import { AppComponent } from './app.component';

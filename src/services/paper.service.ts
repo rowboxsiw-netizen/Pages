@@ -29,18 +29,24 @@ export class PaperService {
   constructor() {
     this.initializePaper();
     
-    // Auto-save every 30 seconds
-    effect(() => {
+    // Auto-save every 30 seconds.
+    // The effect will re-run whenever studentName() changes.
+    // The onCleanup function ensures the previous interval is cleared
+    // before a new one is set, preventing memory leaks.
+    effect((onCleanup) => {
       const name = this.studentName();
       if (name) {
-        const autoSave = setInterval(() => {
+        const autoSaveInterval = setInterval(() => {
           this.saveProgress();
         }, 30000);
 
-        // Cleanup function for effect
-        return () => clearInterval(autoSave);
+        // Register a cleanup function to be called when the effect is destroyed
+        // or re-runs. This is the correct way to handle side-effects like intervals.
+        onCleanup(() => {
+          clearInterval(autoSaveInterval);
+        });
       }
-    }, { allowSignalWrites: true });
+    });
   }
 
   initializePaper() {
