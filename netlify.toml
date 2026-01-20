@@ -1,0 +1,24 @@
+
+# Netlify build configuration for the Angular application.
+# This file provides the necessary instructions for Netlify's build bots.
+
+[build]
+  # The command to build the project. It uses the "build" script from package.json.
+  command = "npm run build"
+  
+  # The directory that contains the deploy-ready assets after the build is complete.
+  # The path corresponds to the default output directory of the Angular CLI.
+  publish = "dist/maharashtra-board-question-paper-generator/browser"
+
+[build.environment]
+  # Specify a modern Node.js version for the build environment.
+  # Angular 18 requires Node.js v18.13.0 or later.
+  NODE_VERSION = "20"
+  
+# This rewrite rule is crucial for Single Page Applications (SPAs) like Angular.
+# It ensures that any direct navigation to a deep link (e.g., /some/route)
+# is served by the main index.html file, allowing the Angular router to handle it.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
